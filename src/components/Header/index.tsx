@@ -2,17 +2,13 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/16/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import cineFinderLogo from "../../assets/cineFinderLogo.png";
 
 const navigation = [
-  { name: "Filmes", href: "#", current: true },
-  { name: "Séries", href: "#", current: false },
+  { name: "Filmes", href: "/movies", current: true },
+  { name: "Séries", href: "/series", current: false },
 ];
 
 function classNames(...classes: (string | undefined | null | false)[]) {
