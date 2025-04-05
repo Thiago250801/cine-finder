@@ -1,17 +1,17 @@
-'use client';
 import { motion } from 'framer-motion';
+import { Card } from '../../components/home/Card';
 
 export default function Home() {
   const recentReleases = [
-    { title: "Duna: Parte 2", rating: "8.5", genre: "Ficção Científica" },
-    { title: "Pobres Criaturas", rating: "8.3", genre: "Drama/Fantasia" },
-    { title: "Argylle", rating: "7.9", genre: "Ação/Espionagem" },
+    { title: "Duna: Parte 2", rating: 8.5, genre: "Ficção Científica" },
+    { title: "Pobres Criaturas", rating: 8.3, genre: "Drama/Fantasia" },
+    { title: "Argylle", rating: 7.9, genre: "Ação/Espionagem" },
   ];
 
   const popularShows = [
-    { title: "True Detective S4", rating: "8.7", genre: "Crime/Drama" },
-    { title: "The Bear S2", rating: "8.9", genre: "Drama/Comédia" },
-    { title: "House of the Dragon", rating: "8.5", genre: "Fantasia" },
+    { title: "True Detective S4", rating: 8.7, genre: "Crime/Drama" },
+    { title: "The Bear S2", rating: 8.9, genre: "Drama/Comédia" },
+    { title: "House of the Dragon", rating: 8.5, genre: "Fantasia" },
   ];
 
   const fadeUp = {
@@ -51,23 +51,8 @@ export default function Home() {
           Últimos Lançamentos nos Cinemas
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {recentReleases.map((movie, i) => (
-            <motion.div
-              key={movie.title}
-              custom={i}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {movie.title}
-              </h3>
-              <div className="flex justify-between text-gray-300 mb-4">
-                <span>{movie.genre}</span>
-                <span className="flex items-center">⭐ {movie.rating}</span>
-              </div>
-            </motion.div>
+        {recentReleases.map((movie, i) => (
+        <Card key={movie.title} title={movie.title} genre={movie.title} rating={movie.rating} custom={i} variants={fadeUp}/> 
           ))}
         </div>
       </section>
@@ -79,22 +64,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {popularShows.map((show, i) => (
-            <motion.div
-              key={show.title}
-              custom={i}
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
-              className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700"
-            >
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {show.title}
-              </h3>
-              <div className="flex justify-between text-gray-300 mb-4">
-                <span>{show.genre}</span>
-                <span className="flex items-center">⭐ {show.rating}</span>
-              </div>
-            </motion.div>
+            <Card key={show.title} title={show.title} genre={show.title} rating={show.rating} custom={i} variants={fadeUp}/> 
           ))}
         </div>
       </section>
