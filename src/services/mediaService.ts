@@ -1,10 +1,11 @@
 import axios from "axios";
 import { Media } from "../types/types";
+const { VITE_API_KEY } = import.meta.env;
 
 const api = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   params: {
-    api_key: "098df0c545fdf121a70f1905a09e0d1e",
+    api_key: VITE_API_KEY,
     language: "pt-BR",
   },
 });
