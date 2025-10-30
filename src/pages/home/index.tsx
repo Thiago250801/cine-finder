@@ -5,11 +5,11 @@ import { Card } from "../../components/home/Card";
 import { useEffect, useState } from "react";
 import { Media } from "../../types/types";
 import {
-  getEmCartaz,
+  getEmCartazHome,
   getMovieGenres,
-  getPopularTv,
+  getPopularTvHome,
   getTvGenres,
-  getTrendingMovie,
+  getTrendingMovieHome,
   getMovieVideos,
 } from "../../services/mediaService";
 
@@ -28,8 +28,8 @@ export default function Home() {
       try {
         const [dataPopularTV, dataRecentMovies, movieGenresData, tvGenresData] =
           await Promise.all([
-            getPopularTv(),
-            getEmCartaz(),
+            getPopularTvHome(),
+            getEmCartazHome(),
             getMovieGenres(),
             getTvGenres(),
           ]);
@@ -45,13 +45,13 @@ export default function Home() {
 
     const fetchTrailerDoDia = async () => {
       try {
-        const trending = await getTrendingMovie();
+        const trending = await getTrendingMovieHome();
         const topMovie = trending[0];
 
         const videos = await getMovieVideos(topMovie.id);
         const trailer = videos.find(
           (vid: { type: string; site: string; key?: string }) =>
-            vid.type === "Trailer" && vid.site === "YouTube"
+            vid.type === "Trailer" && vid.site === "YouTube",
         );
 
         setTrailerMovie(topMovie);
@@ -179,7 +179,7 @@ export default function Home() {
               </h3>
               <p className="text-gray-400 mt-2">{trailerMovie.overview}</p>
               <p className="text-secondary text-sm mt-2 flex items-center gap-1">
-                <Star className="text-yellow-400" size={16}/>
+                <Star className="text-yellow-400" size={16} />
                 {`${
                   trailerMovie?.vote_average
                     ? formatRating(trailerMovie.vote_average)
