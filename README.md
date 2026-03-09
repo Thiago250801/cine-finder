@@ -1,54 +1,79 @@
-# React + TypeScript + Vite
+# CineFinder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web para descoberta de filmes e séries usando a API do TMDB.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Página inicial com:
+  - filmes em cartaz
+  - séries populares
+  - trailer do dia (YouTube)
+- Página de filmes (`/movies`) com:
+  - busca por título
+  - filtros por categoria
+  - paginação
+- Página de séries (`/series`) com:
+  - busca por título
+  - filtros por categoria
+  - paginação
+- Interface responsiva para desktop e mobile
 
-## Expanding the ESLint configuration
+## Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19 + TypeScript
+- Vite
+- React Router
+- Tailwind CSS 4
+- Axios
+- Headless UI + Heroicons + Lucide
+- Framer Motion
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Pré-requisitos
+
+- Node.js 20+ (recomendado)
+- npm
+- Chave da API do TMDB
+
+## Configuração
+
+1. Clone o projeto.
+2. Instale as dependências:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Crie/edite o arquivo `.env` na raiz:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```env
+VITE_API_KEY=sua_chave_tmdb_aqui
 ```
+
+## Scripts
+
+- `npm run dev`: inicia ambiente local em modo desenvolvimento
+- `npm run build`: gera build de produção
+- `npm run preview`: inicia servidor para pré-visualizar o build
+- `npm run lint`: executa lint do projeto
+
+## Estrutura principal
+
+```text
+src/
+  components/
+    Header.tsx
+    SearchInput.tsx
+    FilterButton.tsx
+    home/Card.tsx
+  pages/
+    home/index.tsx
+    movie/index.tsx
+    series/index.tsx
+  services/
+    mediaService.ts
+```
+
+## Observações
+
+- O projeto usa `VITE_API_KEY` via `import.meta.env`.
+- O idioma das requisições para o TMDB está configurado como `pt-BR`.
